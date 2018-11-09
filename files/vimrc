@@ -1,0 +1,163 @@
+" Section: Vim Python Hack
+"--------------------------------------------------------------------------
+
+" Vim loads stuff wrong from Python as for Python 3.7; this fixes the problem
+if has('python3')
+  silent! python3 1
+endif
+
+" Section: Key mappings ->>1
+"--------------------------------------------------------------------------
+
+" Change leader key
+let mapleader = ","
+let maplocalleader = ","
+
+" Folding mappings
+nnoremap <space> za
+nnoremap <CR> za
+nnoremap <leader>f zR
+nnoremap <leader>ff zM
+vnoremap <space> zf
+
+" Keep my text highlighted plz
+vnoremap < <gv
+vnoremap > >gv
+
+" Buffer navigation
+map <S-Left> :bp<CR>
+map <S-Right> :bn<CR>
+
+" Section: Vim options ->>1
+"--------------------------------------------------------------------------
+
+" Editor behavior
+set autoread
+set autowrite
+set directory-=. " Wherever but here
+set encoding=utf8 " UTF-8 default enconding
+set expandtab " Tabs are the devil's work
+set fileformats=unix,dos,mac " Prefer Unix
+set hidden
+set history=200
+set nobackup " No backup after editing
+set nowritebackup " No backups made while editing
+set printoptions=paper:letter
+set scroll=4 " Number of lines to scroll with ^U ^D
+set softtabstop=4 " Makes you think that your spaces are tabs
+set shortmess+=A " Ignore swamp files
+set tabstop=4 " The all powerfull tab number
+set formatoptions+=j " Smarter line joins
+
+" Cosmetics
+set laststatus=2 " Always show the status bar
+set linebreak " Break lines by word, not by char
+silent! set mouse=nvc " You can use the mouse, but not in insert mode
+set number " Show line numbers
+set ruler " Show row and col percentage
+set scrolloff=15 " Kind of a cursor margin
+set shiftround " Inteligent indent. roud the spaces of the shift width
+set showbreak=↲ " Show me where you broke my lines
+set showmatch " Highlight matching parentesis, braces, etc.
+set sidescrolloff=3 " Side margins
+set conceallevel=0 " Don't like when stuff is hidden
+
+" Search
+set hlsearch " Highlight search
+set ignorecase " Case insensitive
+set incsearch " Search as you type
+set infercase
+set smartcase
+set suffixes+=.pyc " Ignore these extensions when autocompleting files
+set wildmenu " Show me possible completitions in command line
+set wildmode=list:longest,full " Show me ALL posible completitions
+set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules " Ok, not all
+
+" Indentation
+filetype plugin indent on
+set backspace=indent,eol,start
+
+" Autofold and manual fold at the same time
+set foldmarker=->>,<<-
+set foldlevel=99
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufRead * if &fdm == 'syntax' | setlocal foldmethod=marker | endif
+augroup END
+
+" Section: Filetypes ->>1
+" ---------------------------------------------------------------------------
+
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+" Section: Command and functions ->>1
+"--------------------------------------------------------------------------
+
+" http://stackoverflow.com/questions/1005/getting-root-permissions-on-a-file-inside-of-vi
+cmap w!! w !sudo tee >/dev/null %
+
+" trim spaces at EOL
+command! TEOL %s/ \+$//
+
+" Section: Plugin settings ->>1
+"--------------------------------------------------------------------------
+
+" Pathogen
+execute pathogen#infect()
+execute pathogen#helptags()
+
+" NERD_tree.vim
+let NERDTreeIgnore=['\~$', '\.pyc$', '__pycache__', '\.egg-info$', 'build', 'dist']
+map <C-n> :NERDTreeToggle<CR>
+
+" indentLine
+let g:indentLine_char='▏'
+
+" GitGutter
+let g:gitgutter_sign_added='∙'
+let g:gitgutter_sign_modified='∝'
+let g:gitgutter_sign_removed='∘'
+let g:gitgutter_sign_modified_removed='∘'
+
+" Ale
+let g:ale_linters={'python': ['pylint', 'pycodestyle']}
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+
+" ctrlp
+let g:ctrlp_map='<c-p>'
+let g:ctrlp_cmd='CtrlPMixed'
+let g:ctrlp_working_path_mode='ra'
+
+" vim-terraform
+let g:terraform_align=1
+let g:terraform_fold_sections=1
+
+" vim-devicons
+let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
+let g:WebDevIconsUnicodeDecorateFolderNodes=1
+let g:DevIconsEnableFoldersOpenClose=1
+
+" vim-gitgutter
+map <Leader>ga :GitGutterAll<CR>
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+
+" Section: Color and syntax ->>1
+"--------------------------------------------------------------------------
+
+syntax on
+
+" Highlight leading spaces
+augroup vimrc
+  highlight link sensibleWhitespaceError Error
+  autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
+augroup END
+
+let python_highlight_all=1
+
+" Activate color scheme and let it switch during the day
+let g:sierra_Pitch=1
+colorscheme sierra

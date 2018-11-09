@@ -1,0 +1,29 @@
+---
+
+- import_tasks: homebrew.yml
+  tags:
+    - homebrew
+
+- import_tasks: fish.yml
+  tags:
+    - fish
+
+- import_tasks: vim.yml
+  tags:
+    - vim
+
+- import_tasks: ssh.yml
+  tags:
+    - ssh
+
+- import_tasks: gpg.yml
+  tags:
+    - gpg
+
+- import_tasks: osx.yml
+  tags:
+    - osx
+
+- import_tasks: dotfiles.yml
+  tags:
+    - dotfiles

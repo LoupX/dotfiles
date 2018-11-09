@@ -1,0 +1,50 @@
+---
+
+- name: Creating autoload directory
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/autoload"
+    state: directory
+
+- name: Creating bundle directory
+  file:
+    path: "{{ ansible_env.HOME }}/.vim/bundle"
+    state: directory
+
+- name: Updating vimrc
+  copy:
+    src: "{{ vimrc_path }}"
+    dest: "{{ ansible_env.HOME }}/.vimrc"
+
+- name: Downloading pathogen
+  get_url:
+    url: https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: "{{ ansible_env.HOME }}/.vim/autoload"
+    validate_certs: no
+
+- name: Installing vim plugins
+  git:
+    repo: "{{ item.repo }}"
+    depth: 1
+    force: yes
+    recursive: yes
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/{{ item.name }}"
+  with_items: "{{ vim_plugins }}"
+
+# Dealing with this separately because of the compiled component
+- name: Installing YouCompleteMe
+  git:
+    repo: https://github.com/Valloric/YouCompleteMe.git
+    depth: 1
+    force: yes
+    recursive: yes
+    dest: "{{ ansible_env.HOME }}/.vim/bundle/youcompleteme"
+  register: ycm_result
+
+- name: Compiling YouCompleteMe
+  shell: >
+    python3 install.py --js-completer --clang-completer
+    --go-completer --build-dir {{ ansible_env.HOME }}/.youcompleteme
+  args:
+    executable: /usr/local/bin/fish
+    chdir: "{{ ansible_env.HOME }}/.vim/bundle/youcompleteme"
+  when: ycm_result is changed

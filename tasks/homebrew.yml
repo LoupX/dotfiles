@@ -1,0 +1,30 @@
+---
+
+- name: Updating homebrew and upgrading packages
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: Adding additional taps
+  homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ homebrew_taps }}"
+
+- name: Installing basic tools
+  homebrew:
+    name: "{{ basic_tools }}"
+
+- name: Installing cask applications
+  homebrew_cask:
+    name: "{{ homebrew_cask_applications }}"
+
+- name: Installing programming environments
+  homebrew:
+    name: "{{ programming_environments }}"
+
+- name: Installing vim and dependencies
+  homebrew:
+    name: "{{ vim_dependencies }}"
+    state: latest
+    install_options: with-lua

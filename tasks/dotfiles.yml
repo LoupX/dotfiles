@@ -1,0 +1,17 @@
+---
+
+- name: Create user config directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/fish"
+    recurse: yes
+    state: directory
+
+- name: Updating fish configuration
+  copy:
+    src: "{{ fish_config_path }}"
+    dest: "{{ ansible_env.HOME }}/.config/fish/config.fish"
+
+- name: Copying .gitconfig file
+  copy:
+    src: "{{ gitconfig_path }}"
+    dest: "{{ ansible_env.HOME }}/.gitconfig"

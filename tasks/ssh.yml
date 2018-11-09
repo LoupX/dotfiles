@@ -1,0 +1,19 @@
+---
+
+- name: Creating .ssh directory
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+
+- name: Installing ssh keys
+  copy:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item }}"
+    mode: 0600
+  with_items: "{{ ssh_keys  }}"
+
+- name: Installing ssh config
+  copy:
+    src: "{{ ssh_config }}"
+    dest: "{{ ansible_env.HOME }}/.ssh/config"
+    mode: 0600

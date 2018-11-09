@@ -1,0 +1,48 @@
+---
+
+- name: Creating fish functions directory
+  file:
+    dest: "{{ ansible_env.HOME }}/.config/fish/functions"
+    recurse: yes
+    state: directory
+
+- name: Creating pyenv directory
+  file:
+    dest: "{{ ansible_env.HOME }}/.pyenv"
+    recurse: yes
+    state: directory
+
+- name: Installing fisherman
+  get_url:
+    url: https://git.io/fisher
+    dest: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
+
+- name: Installing fish plugins
+  shell: fisher add {{ item.name | default(item) }}
+  args:
+    executable: /usr/local/bin/fish
+    creates: "{{ ansible_env.HOME }}/.config/fisherman/{{ item.creates | default(item) }}"
+  with_items: "{{ fish_plugins }}"
+
+- name: Creating fish completions folder
+  file:
+    path: "{{ ansible_env.HOME }}/.config/fish/completions"
+    state: directory
+
+- name: Updating pipenv completion for fish
+  copy:
+    src: pipenv.fish
+    dest: "{{ ansible_env.HOME }}/.config/fish/completions/pipenv.fish"
+
+- name: Adding fish to shells
+  lineinfile:
+    path: /etc/shells
+    regexp: '^/usr/local/bin/fish'
+    line: '/usr/local/bin/fish'
+  become: true
+  become_user: root
+
+- name: Changing login shell to fish
+  command: chsh -s /usr/local/bin/fish
+  changed_when: false
+  when: lookup('env','SHELL') != "/usr/local/bin/fish"

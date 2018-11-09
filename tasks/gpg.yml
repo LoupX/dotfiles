@@ -1,0 +1,46 @@
+---
+
+- name: Checking gpg key
+  command: gpg -a --export {{ gpg_key_id }}
+  register: gpg_export
+  changed_when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Installing pinetry configuration
+  copy:
+    src: gpg-agent.conf
+    dest: "{{ ansible_env.HOME }}/.gnupg/gpg-agent.conf"
+  register: gpg_result
+
+- name: Copying gpg public key to temp file
+  copy:
+    src: "{{ gpg_public_key }}"
+    dest: /tmp/gpg_public.key
+    mode: 0600
+  when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Copying gpg private key to temp file
+  copy:
+    src: "{{ gpg_private_key }}"
+    dest: /tmp/gpg_private.key
+    mode: 0600
+  when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Installing gpg public key
+  command: gpg --import /tmp/gpg_public.key
+  when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Installing gpg private key
+  command: gpg --import /tmp/gpg_private.key
+  when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Deleting gpg public key temp file
+  file:
+    path: /tmp/gpg_public.key
+    state: absent
+  when: 'gpg_flag not in gpg_export.stdout'
+
+- name: Deleting gpg private key temp file
+  file:
+    path: /tmp/gpg_private.key
+    state: absent
+  when: 'gpg_flag not in gpg_export.stdout'

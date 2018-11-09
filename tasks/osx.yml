@@ -1,0 +1,13 @@
+---
+
+- name: Showing Library folder
+  command: chflags nohidden ~/Library
+  changed_when: false
+
+- name: Applying OSX defaults
+  osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    type: "{{ item.type }}"
+    value: "{{ item.value }}"
+  with_items: "{{ osx_defaults }}"

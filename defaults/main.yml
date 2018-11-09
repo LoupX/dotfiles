@@ -1,0 +1,353 @@
+---
+
+homebrew_taps:
+  - homebrew/cask-versions # To use beta and experimental stuff
+  - Yleisradio/terraforms  # chtf
+  - homebrew/cask-drivers  # philips-hue-sync
+  - homebrew/cask-fonts    # vim fonts
+
+basic_tools:
+  - ack
+  - awscli
+  - bash
+  - bash-completion
+  - chtf
+  - docker
+  - fd
+  - fish
+  - git
+  - googler
+  - gpg
+  - htop
+  - make
+  - mosh
+  - neofetch
+  - nnn
+  - pinentry-mac
+  - terraform
+  - the_silver_searcher
+  - wget
+
+homebrew_cask_applications:
+  - 1password
+  - authy
+  - caprine
+  - cyberduck
+  - docker
+  - dropbox
+  - evernote
+  - firefox
+  - font-firacode-nerd-font  # vim's font
+  - google-chat
+  - google-cloud-sdk
+  - google-chrome
+  - google-drive-file-stream
+  - grammarly
+  - iterm2
+  - java
+  - keybase
+  - logitech-options
+  - marshallofsound-google-play-music-player
+  - microsoft-office
+  - mysqlworkbench
+  - openemu-experimental
+  - philips-hue-sync
+  - postgres
+  - postman
+  - skype
+  - slack
+  - spotify
+  - steam
+  - teamviewer
+  - telegram
+  - transmission
+  - tunnelbear
+  - tunnelblick
+  - zoomus
+
+programming_environments:
+  - node
+  - npm
+
+  - ipython
+  - python
+  - pyenv
+
+  - go
+
+vim_dependencies:
+  - vim
+  - ansible-lint
+  - CMake
+  - proselint
+
+# This no longer does anything because mas no longer works, but keeping it to
+# remember what to install
+mas_applications:
+  - { id: "1263070803", name: Lungo }
+  - { id: "1289197285", name: MindNode 5 }
+  - { id: "1012291524", name: Moneywiz 2 }
+  - { id: "409201541", name: Pages }
+  - { id: "1176895641", name: Spark }
+  - { id: "1278508951", name: Trello }
+  - { id: "410628904", name: Wunderlist }
+
+fish_plugins:
+  - { name: edc/bass, creates: bass }
+  - { name: laughedelic/pisces, creates: pisces }
+  - { name: matchai/spacefish, creates: spacefish }
+  - { name: jethrokuan/z, creates: z}
+
+gopath: ~/dev/go
+
+# Dotfiles
+fish_config_path: config.fish
+vimrc_path: vimrc
+gitconfig_path: gitconfig
+
+vim_plugins:
+  - { name: ale, repo: "https://github.com/w0rp/ale.git" }
+  - { name: ansible-vim, repo: "https://github.com/pearofducks/ansible-vim.git" }
+  - { name: auto-pairs, repo: "https://github.com/jiangmiao/auto-pairs.git" }
+  - { name: ctrlp, repo: "https://github.com/ctrlpvim/ctrlp.vim.git" }
+  - { name: nerdtree, repo: "https://github.com/scrooloose/nerdtree.git" }
+  - { name: nerdtree-git-plugin, repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git" }
+  - { name: python-syntax, repo: "https://github.com/hdima/python-syntax.git" }
+  - { name: vim-airline, repo: "https://github.com/vim-airline/vim-airline.git" }
+  - { name: vim-buffergator, repo: "https://github.com/jeetsukumaran/vim-buffergator.git" }
+  - { name: vim-devicons, repo: "https://github.com/ryanoasis/vim-devicons" }
+  - { name: vim-fish, repo: "https://github.com/dag/vim-fish.git" }
+  - { name: vim-fugitive, repo: "https://github.com/tpope/vim-fugitive.git" }
+  - { name: vim-gitgutter, repo: "https://github.com/airblade/vim-gitgutter.git" }
+  - { name: vim-go, repo: "https://github.com/fatih/vim-go.git" }
+  - { name: vim-indentLine, repo: "https://github.com/Yggdroot/indentLine.git" }
+  - { name: vim-terraform, repo: "https://github.com/hashivim/vim-terraform.git" }
+  - { name: sierra, repo: "https://github.com/AlessandroYorba/Sierra.git" }
+  - { name: surround, repo: "https://github.com/tpope/vim-surround.git" }
+  - { name: symplyfold, repo: "https://github.com/tmhedberg/SimpylFold.git" }
+
+ssh_keys:
+  - id_rsa_demo
+  - id_rsa_demo.pub
+
+ssh_config: demo_ssh_config
+
+gpg_public_key: gpg_demo_public.key
+gpg_private_key: gpg_demo_private.key
+gpg_flag: -----BEGIN PGP PUBLIC KEY BLOCK-----
+gpg_key_id: your_email@example.com
+
+# Docs
+# https://docs.ansible.com/ansible/2.5/modules/osx_defaults_module.html
+
+# Section: OSX defaults ->>1
+# -------------------------------------------------------------------------
+osx_defaults:
+  # Section: General ->>2
+  # -------------------------------------------------------------------------
+  - domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+    meta: Disables open application confirmation dialog
+  - domain: NSGlobalDomain
+    key: NSAutomaticSpellingCorrectionEnabled
+    type: bool
+    value: false
+  - domain: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: bool
+    value: false
+  - domain: NSGlobalDomain
+    key: NSAutomaticCapitalizationEnabled
+    type: bool
+    value: false
+  - domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: bool
+    value: false
+  - domain: NSGlobalDomain
+    key: NSAutomaticPeriodSubstitutionEnabled
+    type: bool
+    value: false
+  - domain: NSGlobalDomain
+    key: AppleInterfaceStyle
+    type: string
+    value: Dark
+  - domain: com.apple.menuextra.battery
+    key: ShowPercent
+    type: string
+    value: YES
+  - domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    type: int
+    value: 1
+  - domain: com.apple.systemuiserver
+    key: menuExtras
+    type: array
+    value:
+      - /System/Library/CoreServices/Menu Extras/Volume.menu
+      - /System/Library/CoreServices/Menu Extras/Displays.menu
+      - /System/Library/CoreServices/Menu Extras/Bluetooth.menu
+  # Section: I/O ->>2
+  # -------------------------------------------------------------------------
+  - domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+  - domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: int
+    value: 1
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: Clicking
+    type: int
+    value: 1
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: int
+    value: 1
+  - domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: TrackpadThreeFingerDrag
+    type: bool
+    value: true
+  - domain: com.apple.AppleMultitouchTrackpad
+    key: TrackpadThreeFingerDrag
+    type: bool
+    value: true
+  - domain: NSGlobalDomain
+    key: com.apple.AppleMultitouchTrackpad.TrackpadFourFingerHorizSwipeGesture
+    type: int
+    value: 2
+  - domain: NSGlobalDomain
+    key: AppleMeasurementUnits
+    type: string
+    value: Centimeters
+  - domain: NSGlobalDomain
+    key: AppleMetricUnits
+    type: bool
+    value: true
+  - domain: com.apple.screensaver
+    key: askForPassword
+    type: int
+    value: 1
+  - domain: com.apple.screensaver
+    key: askForPasswordDelay
+    type: int
+    value: 0
+  # Section: Finder ->>2
+  # -------------------------------------------------------------------------
+  - domain: com.apple.finder
+    key: NewWindowTarget
+    type: string
+    value: PfHm
+  - domain: com.apple.finder
+    key: NewWindowTargetPath
+    type: string
+    value: file://{{ ansible_env.HOME }}/
+  - domain: com.apple.finder
+    key: ShowRecentTags
+    type: int
+    value: 0
+  - domain: com.apple.finder
+    key: ShowExternalHardDrivesOnDesktop
+    type: int
+    value: 0
+  - domain: com.apple.finder
+    key: ShowMountedServersOnDesktop
+    type: int
+    value: 0
+  - domain: com.apple.finder
+    key: ShowRemovableMediaOnDesktop
+    type: int
+    value: 1
+  - domain: NSGlobalDomain
+    key: AppleShowAllExtensions
+    type: bool
+    value: true
+  - domain: com.apple.finder
+    key: FXDefaultSearchScope
+    type: string
+    value: SCcf
+  - domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+  - domain: com.apple.finder
+    key: _FXShowPosixPathInTitle
+    type: bool
+    value: true
+  - domain: com.apple.desktopservices
+    key: DSDontWriteNetworkStores
+    type: bool
+    value: true
+  - domain: com.apple.desktopservices
+    key: DSDontWriteUSBStores
+    type: bool
+    value: true
+  # Section: Dock ->>2
+  # -------------------------------------------------------------------------
+  - domain: com.apple.dock
+    key: magnification
+    type: int
+    value: 1
+  - domain: com.apple.dock
+    key: minimize-to-application
+    type: int
+    value: 1
+  - domain: com.apple.dock
+    key: largesize
+    type: int
+    value: 80
+  - domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 50
+  - domain: com.apple.dock
+    key: show-recents
+    type: int
+    value: 0
+  # Section: Spotlight ->>2
+  # -------------------------------------------------------------------------
+  - domain: com.apple.lookup.shared
+    key: LookupSuggestionsDisabled
+    type: int
+    value: 1
+  - domain: com.apple.spotlight
+    key: orderedItems
+    type: array
+    value:
+      - '{"enabled" = 1;"name" = "APPLICATIONS";}'
+      - '{"enabled" = 1;"name" = "SYSTEM_PREFS";}'
+      - '{"enabled" = 1;"name" = "DIRECTORIES";}'
+      - '{"enabled" = 1;"name" = "PDF";}'
+      - '{"enabled" = 1;"name" = "MENU_CONVERSION";}'
+      - '{"enabled" = 1;"name" = "MENU_EXPRESSION";}'
+      - '{"enabled" = 1;"name" = "MENU_DEFINITION";}'
+      - '{"enabled" = 1;"name" = "DOCUMENTS";}'
+      - '{"enabled" = 1;"name" = "CONTACT";}'
+      - '{"enabled" = 0;"name" = "MESSAGES";}'
+      - '{"enabled" = 0;"name" = "EVENT_TODO";}'
+      - '{"enabled" = 0;"name" = "IMAGES";}'
+      - '{"enabled" = 0;"name" = "BOOKMARKS";}'
+      - '{"enabled" = 0;"name" = "MUSIC";}'
+      - '{"enabled" = 0;"name" = "FONTS";}'
+      - '{"enabled" = 0;"name" = "MOVIES";}'
+      - '{"enabled" = 0;"name" = "PRESENTATIONS";}'
+      - '{"enabled" = 0;"name" = "SPREADSHEETS";}'
+      - '{"enabled" = 0;"name" = "MENU_OTHER";}'
+      - '{"enabled" = 0;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}'
+  # Section: iTerm2 ->>2
+  # -------------------------------------------------------------------------
+  - domain: com.googlecode.iterm2
+    key: HideTabCloseButton
+    type: int
+    value: 1
+  - domain: com.googlecode.iterm2
+    key: ShowFullScreenTabBar
+    type: int
+    value: 0
+  - domain: com.googlecode.iterm2
+    key: TabViewType
+    type: int
+    value: 0
