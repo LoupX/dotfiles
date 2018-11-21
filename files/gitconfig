@@ -65,7 +65,6 @@
 	remote = green
 [branch]
 	autosetuprebase = always
-    autosetupmerge = always
 [log]
 	decorate = short
 [merge]
