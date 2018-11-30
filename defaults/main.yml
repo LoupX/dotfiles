@@ -97,6 +97,7 @@ fish_plugins:
   - { name: laughedelic/pisces, creates: pisces }
   - { name: matchai/spacefish, creates: spacefish }
   - { name: jethrokuan/z, creates: z}
+  - { name: kennethreitz/fish-pipenv, creates: fish-pipenv }
 
 gopath: ~/dev/go
 
