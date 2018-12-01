@@ -33,6 +33,9 @@ deploy:
   api_key: $GITHUB_OAUTH_KEY
   on:
     branch: master
+    tags: false
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  email:
+    on_success: never
