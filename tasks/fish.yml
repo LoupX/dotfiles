@@ -17,12 +17,25 @@
     url: https://git.io/fisher
     dest: "{{ ansible_env.HOME }}/.config/fish/functions/fisher.fish"
 
-- name: Installing fish plugins
-  shell: fisher add {{ item.name | default(item) }}
+- name: Retrieving installed fisherman packages
+  shell: fisher ls
   args:
     executable: /usr/local/bin/fish
-    creates: "{{ ansible_env.HOME }}/.config/fisherman/{{ item.creates | default(item) }}"
+  register: fisherman_plugins
+  changed_when: false
+
+- name: Installing fish plugins
+  shell: fisher add {{ item }}
+  args:
+    executable: /usr/local/bin/fish
   with_items: "{{ fish_plugins }}"
+  when: "item not in fisherman_plugins.stdout"
+
+- name: Update fisherman plugins
+  shell: fisher
+  args:
+    executable: /usr/local/bin/fish
+  changed_when: false
 
 - name: Creating fish completions folder
   file:

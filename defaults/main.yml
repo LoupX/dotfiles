@@ -93,11 +93,11 @@ mas_applications:
   - { id: "410628904", name: Wunderlist }
 
 fish_plugins:
-  - { name: edc/bass, creates: bass }
-  - { name: laughedelic/pisces, creates: pisces }
-  - { name: matchai/spacefish, creates: spacefish }
-  - { name: jethrokuan/z, creates: z}
-  - { name: kennethreitz/fish-pipenv, creates: fish-pipenv }
+  - edc/bass
+  - laughedelic/pisces
+  - matchai/spacefish
+  - jethrokuan/z
+  - kennethreitz/fish-pipenv
 
 gopath: ~/dev/go
 
