@@ -15,3 +15,8 @@
   copy:
     src: "{{ gitconfig_path }}"
     dest: "{{ ansible_env.HOME }}/.gitconfig"
+
+- name: Updating vimrc
+  copy:
+    src: "{{ vimrc_path }}"
+    dest: "{{ ansible_env.HOME }}/.vimrc"

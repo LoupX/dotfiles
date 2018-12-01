@@ -1,34 +1,110 @@
 # Dotfiles
 
-Installs almost everything I need in my local environment.
+Installs almost everything I need in my local environment. It's unlikely that you want your
+setup exactly as mine; feel free to fork it or change the variables described below.
 
 ## Requirements
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+- Homebrew
+- Ansible 2.7+
+- Xcode or Xcode command line tools
 
-## Role Variables
+## Quickstart
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+If you just want to know what you need to install, change and run to get things started,
+this is what you're looking for.
 
-## Dependencies
+### Installing dependencies
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+Before running anything, make sure you have installed all requirements. Follow the instructions
+from [homebrew's home page](https://brew.sh/) and run:
 
-## Example Playbook
+```bash
+brew update
+brew install ansible
+xcode-select --install
+```
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+### What should be changed?
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+You should take a look at the [default variables](defaults/main.yml) and change the values for
+the tools, files or settings you want in your environment. You can find a full reference of
+the variables used in this role in the `Role variables` section
+
+You can do that by adding those values to the [vars file](playbook/vars.yml) in the example
+playbook.
+
+Finally, you can place your custom files (if any) anywhere inside the role, as long as the relative
+path matches with the one defined in the correct variable. More about this in the variables section.
+
+### How do I run it
+
+There's a convenient (Makefile)[Makefile] which defines all possible tasks that can be run using
+this role. You can directly use the ansible command you want, all it does is to run persist all
+available ansible tags
+
+If this wasn't run on a fresh install, is possible that some tasks don't finish successfully. Don't
+forget to restart after an initial installation (or log out and into your session)
+
+## Tasks and variables
+
+To make things easier to understand, variables will be explained within the context of the task
+using them.
+
+### Homebrew
+
+Installs all packages and cask applications required for the environment.
+
+- `homebrew_taps`: List of taps to install applications that need a different source.
+- `basic_tools`: List of packages that can be installed with `brew install`.
+- `homebrew_cask_applications`: List of OS X applications that can be installed using `brew cask install`.
+- `programming_environments`: List of programming environments to be installed using `brew install`.
+- `vim_dependencies`: List of packages to be installed with `brew install` required by vim to work correctly.
+
+### Fish
+
+Changes the default login shell to fish instead of bash.
+
+- `fish_plugins`: List of plugins to be installed to the fish shell.
+
+### Vim
+
+The true editor.
+
+- `vim_plugins`: List of key-value pairs with the `name` of the plugin and the `repo`'s url.'
+
+### SSH
+
+Copy your ssh keys and configuration to your local machine.
+
+- `ssh_keys`: List of relative paths to your ssh private and public keys.
+- `ssh_config`: Relative path to the file with your ssh configuration.
+
+### GPG
+
+Imports your GPG keys to your local machine.
+
+- `gpg_public_key`: Relative path to the file with your gpg public key.
+- `gpg_private_key`: Relative path to the file with your gpg private key.
+
+### OS X
+
+Updates OS X configuration defaults to match your preferences. Things like how to right click,
+region, language and so on.
+
+- `osx_defaults`: List of key-value pairs with the parameters used by the [osx_defaults](osx_defaults) ansible module.
+
+### Dotfiles
+
+Copy your dotfiles to the predefined directories.
+
+- `fish_config_path`: Relative path to the fish configuration file.
+- `gitconfig_path`: Relative path to the gitconfig file.
+- `vimrc_path`: Relative path to the vimrc configuration file.
 
 ## License
 
 BSD
 
-## Author Information
 
-Juan Diego Romero González
-jd@inkatze.com
-/inkatze
-@inkatze
+osx_defaults: https://docs.ansible.com/ansible/2.6/modules/osx_defaults_module.html

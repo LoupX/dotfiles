@@ -10,11 +10,6 @@
     path: "{{ ansible_env.HOME }}/.vim/bundle"
     state: directory
 
-- name: Updating vimrc
-  copy:
-    src: "{{ vimrc_path }}"
-    dest: "{{ ansible_env.HOME }}/.vimrc"
-
 - name: Downloading pathogen
   get_url:
     url: https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim

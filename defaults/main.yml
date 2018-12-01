@@ -99,8 +99,6 @@ fish_plugins:
   - jethrokuan/z
   - kennethreitz/fish-pipenv
 
-gopath: ~/dev/go
-
 # Dotfiles
 fish_config_path: config.fish
 vimrc_path: vimrc
