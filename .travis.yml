@@ -20,9 +20,6 @@ script:
   - pipenv run ansible-lint playbook/main.yml
   - cd playbook && pipenv run ansible-playbook main.yml --syntax-check
 
-on:
-  tags: false
-
 before_deploy:
   # Set up git user name and tag this commit
   - export TRAVIS_TAG=$(python $TRAVIS_BUILD_DIR/version.py)
