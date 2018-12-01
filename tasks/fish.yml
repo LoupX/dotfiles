@@ -23,6 +23,8 @@
     executable: /usr/local/bin/fish
   register: fisherman_plugins
   changed_when: false
+  tags:   # This needs fish
+    - skip_ansible_lint
 
 - name: Installing fish plugins
   shell: fisher add {{ item }}
@@ -30,12 +32,16 @@
     executable: /usr/local/bin/fish
   with_items: "{{ fish_plugins }}"
   when: "item not in fisherman_plugins.stdout"
+  tags:   # This needs fish
+    - skip_ansible_lint
 
 - name: Update fisherman plugins
   shell: fisher
   args:
     executable: /usr/local/bin/fish
   changed_when: false
+  tags:   # This needs fish
+    - skip_ansible_lint
 
 - name: Creating fish completions folder
   file:

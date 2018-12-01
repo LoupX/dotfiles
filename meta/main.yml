@@ -1,13 +1,14 @@
+---
+
 galaxy_info:
-  author: Juan Diego Romero González
-  description: Installs almost everything I need in my local environment.
+  author: Diego Romero
+  description: Local environment setup with dotfiles
   license: BSD
   min_ansible_version: 2.4
   platforms:
     - name: OS X
       versions:
-      - 10.11
-      - 10.12
+        - 10.13
   galaxy_tags:
     - dotfiles
     - osx

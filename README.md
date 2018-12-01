@@ -1,4 +1,4 @@
-# Dotfiles
+# .dotfiles [![Build Status](https://travis-ci.org/inkatze/dotfiles.svg?branch=master)](https://travis-ci.org/inkatze/dotfiles)
 
 Installs almost everything I need in my local environment. It's unlikely that you want your
 setup exactly as mine; feel free to fork it or change the variables described below.
@@ -14,6 +14,23 @@ setup exactly as mine; feel free to fork it or change the variables described be
 If you just want to know what you need to install, change and run to get things started,
 this is what you're looking for.
 
+### TL;DR
+
+This means you want your Mac setup EXACTLY as mine (- my keys). You're weird, but as you wish:
+
+```bash
+# Unless you have a brand new installation, or never touched the terminal before
+# this is likely to fail, but is safe to run if you're unsure.
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+xcode-select --install
+
+# This is the good stuff
+brew update
+brew install ansible
+git clone https://github.com/inkatze/dotfiles.git
+make
+```
+
 ### Installing dependencies
 
 Before running anything, make sure you have installed all requirements. Follow the instructions
@@ -22,8 +39,11 @@ from [homebrew's home page](https://brew.sh/) and run:
 ```bash
 brew update
 brew install ansible
-xcode-select --install
+xcode-select --install  # This might fail if already installed
+git clone https://github.com/inkatze/dotfiles.git
 ```
+
+From now on, assume everything is run inside the root of the repository.
 
 ### What should be changed?
 
@@ -36,6 +56,7 @@ playbook.
 
 Finally, you can place your custom files (if any) anywhere inside the role, as long as the relative
 path matches with the one defined in the correct variable. More about this in the variables section.
+I put mine in the [playbook directory](playbook) in case that's useful for you.
 
 ### How do I run it
 
@@ -44,7 +65,27 @@ this role. You can directly use the ansible command you want, all it does is to 
 available ansible tags
 
 If this wasn't run on a fresh install, is possible that some tasks don't finish successfully. Don't
-forget to restart after an initial installation (or log out and into your session)
+forget to restart after an initial installation (or log out and into your session).
+
+The examples assume you have added your files and setup a custom [vars file](playbook/vars.yml).
+If you're an advanced Ansible user, you should check out the [playbook directory](playbook) and go
+from there.
+
+```bash
+# Examples
+
+# make and make install run everthing
+make
+
+# install fish stuff
+make fish
+
+# update or install your dotfiles
+make dotfiles
+
+# check the rest of the Makfile rules, should be clearer after reading the docs.
+cat Makefile
+```
 
 ## Tasks and variables
 
@@ -92,7 +133,7 @@ Imports your GPG keys to your local machine.
 Updates OS X configuration defaults to match your preferences. Things like how to right click,
 region, language and so on.
 
-- `osx_defaults`: List of key-value pairs with the parameters used by the [osx_defaults](osx_defaults) ansible module.
+- `osx_defaults`: List of key-value pairs with the parameters used by the [osx_defaults][osx_defaults] ansible module.
 
 ### Dotfiles
 
@@ -107,4 +148,4 @@ Copy your dotfiles to the predefined directories.
 BSD
 
 
-osx_defaults: https://docs.ansible.com/ansible/2.6/modules/osx_defaults_module.html
+[osx_defaults]: https://docs.ansible.com/ansible/2.6/modules/osx_defaults_module.html "osx_defaults Ansible module docs"

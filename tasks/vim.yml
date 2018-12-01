@@ -24,6 +24,8 @@
     recursive: yes
     dest: "{{ ansible_env.HOME }}/.vim/bundle/{{ item.name }}"
   with_items: "{{ vim_plugins }}"
+  tags:  # I don't care
+    - skip_ansible_lint
 
 # Dealing with this separately because of the compiled component
 - name: Installing YouCompleteMe
@@ -34,6 +36,8 @@
     recursive: yes
     dest: "{{ ansible_env.HOME }}/.vim/bundle/youcompleteme"
   register: ycm_result
+  tags:  # I don't care
+    - skip_ansible_lint
 
 - name: Compiling YouCompleteMe
   shell: >
@@ -43,3 +47,5 @@
     executable: /usr/local/bin/fish
     chdir: "{{ ansible_env.HOME }}/.vim/bundle/youcompleteme"
   when: ycm_result is changed
+  tags:  # We need fish's config
+    - skip_ansible_lint

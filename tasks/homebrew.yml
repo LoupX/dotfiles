@@ -26,5 +26,4 @@
 - name: Installing vim and dependencies
   homebrew:
     name: "{{ vim_dependencies }}"
-    state: latest
     install_options: with-lua
