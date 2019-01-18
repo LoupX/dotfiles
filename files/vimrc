@@ -89,6 +89,8 @@ augroup END
 " ---------------------------------------------------------------------------
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 
 " Section: Command and functions ->>1
 "--------------------------------------------------------------------------
@@ -120,7 +122,15 @@ let g:gitgutter_sign_removed='∘'
 let g:gitgutter_sign_modified_removed='∘'
 
 " Ale
+let g:ale_linters_explicit=1
+let g:ale_fix_on_save=1
 let g:ale_linters={'python': ['pylint', 'pycodestyle']}
+let g:ale_fixers={
+\   'python': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\   'css': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\   'html': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\}
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -144,6 +154,9 @@ map <Leader>ga :GitGutterAll<CR>
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
+
+" vim-go
+let g:go_fmt_command = "goimports"
 
 " Section: Color and syntax ->>1
 "--------------------------------------------------------------------------

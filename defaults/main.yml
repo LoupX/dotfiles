@@ -26,6 +26,7 @@ basic_tools:
   - pinentry-mac
   - terraform
   - the_silver_searcher
+  - tree
   - wget
 
 homebrew_cask_applications:
@@ -49,6 +50,7 @@ homebrew_cask_applications:
   - logitech-options
   - marshallofsound-google-play-music-player
   - microsoft-office
+  - moneywiz
   - mysqlworkbench
   - openemu-experimental
   - philips-hue-sync
@@ -61,6 +63,7 @@ homebrew_cask_applications:
   - teamviewer
   - telegram
   - transmission
+  - trello
   - tunnelbear
   - tunnelblick
   - zoomus
@@ -70,6 +73,7 @@ programming_environments:
   - npm
 
   - ipython
+  - pipenv
   - python
   - pyenv
 
@@ -97,7 +101,7 @@ fish_plugins:
   - laughedelic/pisces
   - matchai/spacefish
   - jethrokuan/z
-  - kennethreitz/fish-pipenv
+fish_completions: completions.fish
 
 # Dotfiles
 fish_config_path: config.fish
@@ -120,6 +124,8 @@ vim_plugins:
   - { name: vim-gitgutter, repo: "https://github.com/airblade/vim-gitgutter.git" }
   - { name: vim-go, repo: "https://github.com/fatih/vim-go.git" }
   - { name: vim-indentLine, repo: "https://github.com/Yggdroot/indentLine.git" }
+  - { name: vim-javascript, repo: "https://github.com/pangloss/vim-javascript" }
+  - { name: vim-jsx, repo: "https://github.com/mxw/vim-jsx.git" }
   - { name: vim-terraform, repo: "https://github.com/hashivim/vim-terraform.git" }
   - { name: sierra, repo: "https://github.com/AlessandroYorba/Sierra.git" }
   - { name: surround, repo: "https://github.com/tpope/vim-surround.git" }
@@ -300,7 +306,7 @@ osx_defaults:
     value: 80
   - domain: com.apple.dock
     key: tilesize
-    type: int
+    type: float
     value: 50
   - domain: com.apple.dock
     key: show-recents

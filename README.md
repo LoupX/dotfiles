@@ -8,6 +8,8 @@ setup exactly as mine; feel free to fork it or change the variables described be
 - Homebrew
 - Ansible 2.7+
 - Xcode or Xcode command line tools
+- Run `sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /`
+if you're using Mojave or higher (10.14+)
 
 ## Quickstart
 
@@ -107,6 +109,7 @@ Installs all packages and cask applications required for the environment.
 Changes the default login shell to fish instead of bash.
 
 - `fish_plugins`: List of plugins to be installed to the fish shell.
+- `fish completions`: A file with a series of commands to add autocompletion the configured commands.
 
 ### Vim
 

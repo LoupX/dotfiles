@@ -48,10 +48,10 @@
     path: "{{ ansible_env.HOME }}/.config/fish/completions"
     state: directory
 
-- name: Updating pipenv completion for fish
+- name: Updating fish completions
   copy:
-    src: pipenv.fish
-    dest: "{{ ansible_env.HOME }}/.config/fish/completions/pipenv.fish"
+    src: "{{ fish_completions  }}"
+    dest: "{{ ansible_env.HOME }}/.config/fish/completions/completions.fish"
 
 - name: Adding fish to shells
   lineinfile:
