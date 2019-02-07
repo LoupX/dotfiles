@@ -20,13 +20,12 @@ if status --is-login
     set -xg PIPENV_SHELL_FANCY 1
     set -xg DEVPI_DIA "https://devpi.dia.com/datateam/releases/+simple"
     set -xg PIP_EXTRA_INDEX_URL $DEVPI_DIA
-    set -l PYENV_DIR ~/.pyenv
 
     # Binaries
     set -l POSTGRES_BIN /Applications/Postgres.app/Contents/Versions/latest/bin
     set -l PYTHON_LIB_EXEC /usr/local/opt/python/libexec/bin
     set -xg GOBIN $GOBIN
-    set -xg fish_user_paths $GOPATH/bin $POSTGRES_BIN $PYTHON_LIB_EXEC $fish_user_paths
+    set -xg fish_user_paths $GOPATH/bin $POSTGRES_BIN $PYTHON_LIB_EXEC $PYENV_ROOT $fish_user_paths
     echo "Fish user path set" $fish_user_paths
 
     # TODO: Simplify this
