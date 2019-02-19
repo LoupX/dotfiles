@@ -11,7 +11,7 @@
     src: "{{ fish_config_path }}"
     dest: "{{ ansible_env.HOME }}/.config/fish/config.fish"
 
-- name: Copying .gitconfig file
+- name: Updating vim configuration
   copy:
     src: "{{ gitconfig_path }}"
     dest: "{{ ansible_env.HOME }}/.gitconfig"
@@ -20,3 +20,8 @@
   copy:
     src: "{{ vimrc_path }}"
     dest: "{{ ansible_env.HOME }}/.vimrc"
+
+- name: Updating pylintrc
+  copy:
+    src: "{{ pylintrc_path  }}"
+    dest: "{{ ansible_env.HOME  }}/.config/pylintrc"

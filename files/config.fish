@@ -15,11 +15,13 @@ if status --is-login
     set -xg GOPATH $GOPATH
 
     # Python Stuff
+    set -l DEVPI_HOST devpi.dia.com
     set -xg PYENV_ROOT $HOME/.pyenv
     set -xg PIPENV_DEFAULT_PYTHON_VERSION 3.6
     set -xg PIPENV_SHELL_FANCY 1
-    set -xg DEVPI_DIA "https://devpi.dia.com/datateam/releases/+simple"
+    set -xg DEVPI_DIA "https://$DEVPI_HOST/datateam/releases/+simple"
     set -xg PIP_EXTRA_INDEX_URL $DEVPI_DIA
+    set -xg PIP_TRUSTED_HOST $DEVPI_HOST
 
     # Binaries
     set -l POSTGRES_BIN /Applications/Postgres.app/Contents/Versions/latest/bin

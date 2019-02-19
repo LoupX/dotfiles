@@ -107,6 +107,7 @@ fish_completions: completions.fish
 fish_config_path: config.fish
 vimrc_path: vimrc
 gitconfig_path: gitconfig
+pylintrc_path: pylintrc
 
 vim_plugins:
   - { name: ale, repo: "https://github.com/w0rp/ale.git" }
