@@ -28,7 +28,6 @@ if status --is-login
     set -l PYTHON_LIB_EXEC /usr/local/opt/python/libexec/bin
     set -xg GOBIN $GOBIN
     set -xg fish_user_paths $GOPATH/bin $POSTGRES_BIN $PYTHON_LIB_EXEC $PYENV_ROOT $fish_user_paths
-    echo "Fish user path set" $fish_user_paths
 
     # TODO: Simplify this
     if test -f /usr/local/share/chtf/chtf.fish
