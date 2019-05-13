@@ -1,6 +1,9 @@
 alias c 'z'
 
 if status --is-login
+    # Unix stuff
+    set -xg LANG 'en_US'
+
     # Fish Theme
     set -xg fish_greeting '¡Hoal!'
     set -xg SPACEFISH_CHAR_SUFFIX '  '
