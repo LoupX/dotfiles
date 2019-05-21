@@ -1,7 +1,6 @@
 ---
 
 homebrew_taps:
-  - homebrew/cask-versions # To use beta and experimental stuff
   - Yleisradio/terraforms  # chtf
   - homebrew/cask-drivers  # philips-hue-sync
   - homebrew/cask-fonts    # vim fonts
@@ -12,6 +11,7 @@ basic_tools:
   - bash
   - bash-completion
   - chtf
+  - direnv
   - docker
   - fd
   - fish
@@ -62,7 +62,6 @@ homebrew_cask_applications:
   - teamviewer
   - telegram
   - transmission
-  - trello
   - tunnelbear
   - tunnelblick
   - zoomus
