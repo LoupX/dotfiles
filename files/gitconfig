@@ -1,15 +1,15 @@
 [user]
-	name = Diego Romero
-	email = jd@inkatze.com
-	signingkey = FF6211FF90D065A7
+	name = Jose Vargas Traconis
+	email = josevargastr@gmail.com
+	signingkey = 52B977BC8FC7EF36
 [core]
-	editor = vim
+	editor = subl -n -w
 	pager = less -FRX
 	excludesfile = ~/.gitignore
 [gist]
 	private = yes
 [github]
-	user = inkatze
+	user = loupx
 [alias]
 	b = branch
 	bnew = checkout -b

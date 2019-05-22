@@ -2,7 +2,6 @@
 
 homebrew_taps:
   - Yleisradio/terraforms  # chtf
-  - homebrew/cask-drivers  # philips-hue-sync
   - homebrew/cask-fonts    # vim fonts
 
 basic_tools:
@@ -46,25 +45,17 @@ homebrew_cask_applications:
   - grammarly
   - iterm2
   - java
-  - logitech-options
-  - marshallofsound-google-play-music-player
-  - microsoft-office
-  - moneywiz
   - mysqlworkbench
-  - openemu-experimental
-  - philips-hue-sync
   - postgres
   - postman
-  - skype
   - slack
+  - sublime-text
   - spotify
-  - steam
   - teamviewer
   - telegram
   - transmission
   - tunnelbear
-  - tunnelblick
-  - zoomus
+  - visual-studio-code
 
 programming_environments:
   - node
@@ -131,15 +122,15 @@ vim_plugins:
   - { name: symplyfold, repo: "https://github.com/tmhedberg/SimpylFold.git" }
 
 ssh_keys:
-  - id_rsa_demo
-  - id_rsa_demo.pub
+  - id_rsa
+  - id_rsa.pub
 
 ssh_config: demo_ssh_config
 
-gpg_public_key: gpg_demo_public.key
-gpg_private_key: gpg_demo_private.key
+gpg_public_key: publicGPG.key
+gpg_private_key: privateGPG.key
 gpg_flag: -----BEGIN PGP PUBLIC KEY BLOCK-----
-gpg_key_id: your_email@example.com
+gpg_key_id: josevargastr@gmail.com
 
 # Docs
 # https://docs.ansible.com/ansible/2.5/modules/osx_defaults_module.html
