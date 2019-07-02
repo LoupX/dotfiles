@@ -10,6 +10,7 @@ setup exactly as mine; feel free to fork it or change the variables described be
 - Xcode or Xcode command line tools
 - Run `sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /`
 if you're using Mojave or higher (10.14+)
+- If installing apps from the Mac App Store, you need to log into the store manually before running the role.
 
 ## Quickstart
 
@@ -24,6 +25,8 @@ This means you want your Mac setup EXACTLY as mine (- my keys). You're weird, bu
 # Unless you have a brand new installation, or never touched the terminal before
 # this is likely to fail, but is safe to run if you're unsure.
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# While installing Homebrew, xcode will be installed. The following line should not be needed.
 xcode-select --install
 
 # This is the good stuff
@@ -60,6 +63,8 @@ Finally, you can place your custom files (if any) anywhere inside the role, as l
 path matches with the one defined in the correct variable. More about this in the variables section.
 I put mine in the [playbook directory](playbook) in case that's useful for you.
 
+It is also recommended to change the [gitconfig details](files/gitconfig) since it is set to use my information and you may prefer use your own.
+
 ### How do I run it
 
 There's a convenient (Makefile)[Makefile] which defines all possible tasks that can be run using
@@ -79,13 +84,13 @@ from there.
 # make and make install run everthing
 make
 
-# install fish stuff
+# Install fish stuff
 make fish
 
-# update or install your dotfiles
+# Update or install your dotfiles
 make dotfiles
 
-# check the rest of the Makfile rules, should be clearer after reading the docs.
+# check the rest of the Makfile rules, it should be clearer after reading the docs.
 cat Makefile
 ```
 
@@ -130,6 +135,13 @@ Imports your GPG keys to your local machine.
 
 - `gpg_public_key`: Relative path to the file with your gpg public key.
 - `gpg_private_key`: Relative path to the file with your gpg private key.
+
+### MAS
+
+Installs apps from the Mac App Store. You need to login to the store manually if using macOS 10.13_+.
+
+- `mas__applications`: Hash list with the ids of the macOS apps to install. The name key is optional and only used as reference to the user.
+
 
 ### OS X
 
