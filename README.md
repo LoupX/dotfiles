@@ -1,3 +1,5 @@
+# .dotfiles [![Build Status](https://travis-ci.org/loupx/dotfiles.svg?branch=master)](https://travis-ci.org/loupx/dotfiles)
+
 Installs almost everything I need in my local environment. It's unlikely that you want your
 setup exactly as mine; feel free to fork it or change the variables described below.
 

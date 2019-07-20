@@ -32,10 +32,10 @@ homebrew_cask_applications:
   - 1password
   - authy
   - caprine
+  - copyq
   - cyberduck
   - docker
   - dropbox
-  - evernote
   - firefox
   - font-firacode-nerd-font  # vim's font
   - google-chat
@@ -43,14 +43,17 @@ homebrew_cask_applications:
   - google-chrome
   - google-drive-file-stream
   - grammarly
+  - hyperdock
   - iterm2
   - java
   - mysqlworkbench
   - postgres
   - postman
+  - rocket #Emojis stuff
   - slack
-  - sublime-text
   - spotify
+  - sublime-text
+  - subtitles
   - teamviewer
   - telegram
   - transmission
