@@ -1,99 +1,99 @@
 ---
 
 homebrew_taps:
-  - Yleisradio/terraforms  # chtf
-  - homebrew/cask-fonts    # vim fonts
+- homebrew/cask-fonts    # vim fonts
 
 basic_tools:
-  - ack
-  - awscli
-  - bash
-  - bash-completion
-  - chtf
-  - direnv
-  - docker
-  - fd
-  - fish
-  - git
-  - googler
-  - gpg
-  - htop
-  - make
-  - mosh
-  - neofetch
-  - nnn
-  - pinentry-mac
-  - terraform
-  - the_silver_searcher
-  - tree
-  - wget
+- ack
+- bash
+- bash-completion
+- direnv
+- docker
+- fd
+- fish
+- git
+- googler
+- gpg
+- htop
+- make
+- mas
+- mosh
+- neofetch
+- nnn
+- pinentry-mac
+- the_silver_searcher
+- tree
+- wget
 
 homebrew_cask_applications:
-  - 1password
-  - authy
-  - caprine
-  - copyq
-  - cyberduck
-  - docker
-  - dropbox
-  - firefox
-  - font-firacode-nerd-font  # vim's font
-  - google-chat
-  - google-cloud-sdk
-  - google-chrome
-  - google-drive-file-stream
-  - grammarly
-  - hyperdock
-  - iterm2
-  - java
-  - mysqlworkbench
-  - postgres
-  - postman
-  - rocket #Emojis stuff
-  - slack
-  - spotify
-  - sublime-text
-  - subtitles
-  - teamviewer
-  - telegram
-  - transmission
-  - tunnelbear
-  - visual-studio-code
-  - vlc
+- 1password
+- authy
+- caprine
+- copyq #copyQ
+- cyberduck
+- docker
+- dropbox #dropbox
+- firefox
+- font-firacode-nerd-font  # vim's font
+- google-cloud-sdk
+- google-chrome
+- grammarly
+- hyperdock
+- iterm2
+- java
+- mysqlworkbench
+- postgres
+- postman
+- rocket #Emojis stuff
+- slack
+- spotify
+- sublime-text
+- subtitles
+- teamviewer
+- telegram
+- transmission
+- tunnelbear
+- visual-studio-code
+- vlc #VLC player
 
 programming_environments:
-  - node
-  - npm
+- node
+- npm
 
-  - ipython
-  - pipenv
-  - python
-  - pyenv
+- ipython
+- pipenv
+- python
+- pyenv
 
-  - go
+- go
+- golangci/tap/golangci-lint
 
 vim_dependencies:
-  - vim
-  - ansible-lint
-  - CMake
-  - proselint
+- vim
+- ansible-lint
+- CMake
+- proselint
 
-# This no longer does anything because mas no longer works, but keeping it to
-# remember what to install
 mas_applications:
-  - { id: "1263070803", name: Lungo }
-  - { id: "1289197285", name: MindNode 5 }
-  - { id: "1012291524", name: Moneywiz 2 }
-  - { id: "409201541", name: Pages }
-  - { id: "1176895641", name: Spark }
-  - { id: "1278508951", name: Trello }
-  - { id: "410628904", name: Wunderlist }
+- { id: "1319884285", name: Black Out }
+- { id: "1206020918", name: Battery Indicator }
+- { id: "409183694", name: Keynote }
+- { id: "1263070803", name: Lungo }
+- { id: "1289197285", name: MindNode 5 }
+- { id: "1116599239", name: NordVPN }
+- { id: "409201541", name: Pages }
+- { id: "803453959", name: Slack }
+- { id: "1278508951", name: Trello }
+- { id: "1384080005", name: Tweetbot }
+- { id: "410628904", name: Wunderlist }
+- { id: "497799835", name: Xcode }
 
 fish_plugins:
-  - edc/bass
-  - laughedelic/pisces
-  - matchai/spacefish
-  - jethrokuan/z
+- edc/bass
+- laughedelic/pisces
+- matchai/spacefish
+- jethrokuan/z
+- jorgebucaran/fish-nvm
 fish_completions: completions.fish
 
 # Dotfiles
@@ -103,31 +103,33 @@ gitconfig_path: gitconfig
 pylintrc_path: pylintrc
 
 vim_plugins:
-  - { name: ale, repo: "https://github.com/w0rp/ale.git" }
-  - { name: ansible-vim, repo: "https://github.com/pearofducks/ansible-vim.git" }
-  - { name: auto-pairs, repo: "https://github.com/jiangmiao/auto-pairs.git" }
-  - { name: ctrlp, repo: "https://github.com/ctrlpvim/ctrlp.vim.git" }
-  - { name: nerdtree, repo: "https://github.com/scrooloose/nerdtree.git" }
-  - { name: nerdtree-git-plugin, repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git" }
-  - { name: python-syntax, repo: "https://github.com/hdima/python-syntax.git" }
-  - { name: vim-airline, repo: "https://github.com/vim-airline/vim-airline.git" }
-  - { name: vim-buffergator, repo: "https://github.com/jeetsukumaran/vim-buffergator.git" }
-  - { name: vim-devicons, repo: "https://github.com/ryanoasis/vim-devicons" }
-  - { name: vim-fish, repo: "https://github.com/dag/vim-fish.git" }
-  - { name: vim-fugitive, repo: "https://github.com/tpope/vim-fugitive.git" }
-  - { name: vim-gitgutter, repo: "https://github.com/airblade/vim-gitgutter.git" }
-  - { name: vim-go, repo: "https://github.com/fatih/vim-go.git" }
-  - { name: vim-indentLine, repo: "https://github.com/Yggdroot/indentLine.git" }
-  - { name: vim-javascript, repo: "https://github.com/pangloss/vim-javascript" }
-  - { name: vim-jsx, repo: "https://github.com/mxw/vim-jsx.git" }
-  - { name: vim-terraform, repo: "https://github.com/hashivim/vim-terraform.git" }
-  - { name: sierra, repo: "https://github.com/AlessandroYorba/Sierra.git" }
-  - { name: surround, repo: "https://github.com/tpope/vim-surround.git" }
-  - { name: symplyfold, repo: "https://github.com/tmhedberg/SimpylFold.git" }
+- { name: ale, repo: "https://github.com/w0rp/ale.git" }
+- { name: ansible-vim, repo: "https://github.com/pearofducks/ansible-vim.git" }
+- { name: auto-pairs, repo: "https://github.com/jiangmiao/auto-pairs.git" }
+- { name: ctrlp, repo: "https://github.com/ctrlpvim/ctrlp.vim.git" }
+- { name: nerdtree, repo: "https://github.com/scrooloose/nerdtree.git" }
+- { name: nerdtree-git-plugin, repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git" }
+- { name: python-syntax, repo: "https://github.com/hdima/python-syntax.git" }
+- { name: vim-airline, repo: "https://github.com/vim-airline/vim-airline.git" }
+- { name: vim-buffergator, repo: "https://github.com/jeetsukumaran/vim-buffergator.git" }
+- { name: vim-devicons, repo: "https://github.com/ryanoasis/vim-devicons" }
+- { name: vim-fish, repo: "https://github.com/dag/vim-fish.git" }
+- { name: vim-fugitive, repo: "https://github.com/tpope/vim-fugitive.git" }
+- { name: vim-gitgutter, repo: "https://github.com/airblade/vim-gitgutter.git" }
+- { name: vim-go, repo: "https://github.com/fatih/vim-go.git" }
+- { name: vim-indentLine, repo: "https://github.com/Yggdroot/indentLine.git" }
+- { name: vim-javascript, repo: "https://github.com/pangloss/vim-javascript" }
+- { name: vim-jsx, repo: "https://github.com/mxw/vim-jsx.git" }
+- { name: vim-jsx-typescript, repo: "https://github.com/peitalin/vim-jsx-typescript" }
+- { name: sierra, repo: "https://github.com/AlessandroYorba/Sierra.git" }
+- { name: surround, repo: "https://github.com/tpope/vim-surround.git" }
+- { name: symplyfold, repo: "https://github.com/tmhedberg/SimpylFold.git" }
+- { name: tsuquyomi, repo: "https://github.com/Quramy/tsuquyomi.git" }
+- { name: typescript-vim, repo: "https://github.com/leafgarland/typescript-vim.git" }
 
 ssh_keys:
-  - id_rsa
-  - id_rsa.pub
+- id_rsa
+- id_rsa.pub
 
 ssh_config: demo_ssh_config
 
@@ -320,7 +322,7 @@ osx_defaults:
       - '{"enabled" = 1;"name" = "SYSTEM_PREFS";}'
       - '{"enabled" = 1;"name" = "DIRECTORIES";}'
       - '{"enabled" = 1;"name" = "PDF";}'
-      - '{"enabled" = 1;"name" = "MENU_CONVERSION";}'
+      - '{"enabled" = 1;"name" = "MENU_CONVERSIONº";}'
       - '{"enabled" = 1;"name" = "MENU_EXPRESSION";}'
       - '{"enabled" = 1;"name" = "MENU_DEFINITION";}'
       - '{"enabled" = 1;"name" = "DOCUMENTS";}'

@@ -48,6 +48,7 @@ set softtabstop=4 " Makes you think that your spaces are tabs
 set shortmess+=A " Ignore swamp files
 set tabstop=4 " The all powerfull tab number
 set formatoptions+=j " Smarter line joins
+set omnifunc=syntaxcomplete#Complete " Autocomplete
 
 " Cosmetics
 set laststatus=2 " Always show the status bar
@@ -60,7 +61,6 @@ set shiftround " Inteligent indent. roud the spaces of the shift width
 set showbreak=↲ " Show me where you broke my lines
 set showmatch " Highlight matching parentesis, braces, etc.
 set sidescrolloff=3 " Side margins
-set conceallevel=0 " Don't like when stuff is hidden
 
 " Search
 set hlsearch " Highlight search
@@ -91,8 +91,12 @@ augroup END
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType typescript.tsx setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType go setlocal ts=4 sts=4 sw=4 noexpandtab autowrite
+autocmd FileType json setlocal ts=2 sts=2 sw=2 conceallevel=0 expandtab
+autocmd FileType fish setlocal ts=2 sts=2 sw=2 expandtab
 
 " Section: Command and functions ->>1
 "--------------------------------------------------------------------------
@@ -111,11 +115,12 @@ execute pathogen#infect()
 execute pathogen#helptags()
 
 " NERD_tree.vim
-let NERDTreeIgnore=['\~$', '\.pyc$', '__pycache__', '\.egg-info$', 'build', 'dist']
+let NERDTreeIgnore=['\~$', '\.pyc$', '__pycache__', '\.egg-info$', '^build$', '^dist$']
 map <C-n> :NERDTreeToggle<CR>
 
 " indentLine
 let g:indentLine_char='▏'
+let g:indentLine_fileTypeExclude=['json']
 
 " GitGutter
 let g:gitgutter_sign_added='∙'
@@ -124,16 +129,27 @@ let g:gitgutter_sign_removed='∘'
 let g:gitgutter_sign_modified_removed='∘'
 
 " Ale
+let g:ale_sign_error = '✘'
+let g:ale_sign_warning = '⚠'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
 let g:ale_linters_explicit=1
 let g:ale_fix_on_save=1
 let g:ale_linters={
 \   'python': ['pylint', 'pycodestyle'],
+\   'javascript': ['eslint'],
+\   'jsx': ['eslint'],
+\   'html': ['eslint'],
+\   'typescript': ['eslint'],
 \}
 let g:ale_fixers={
-\   'python': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-\   'css': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
-\   'html': ['prettier', 'remove_trailing_lines', 'trim_whitespace'],
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['prettier'],
+\   'jsx': ['prettier'],
+\   'html': ['prettier'],
+\   'css': ['prettier'],
+\   'typescript': ['prettier'],
 \}
 
 " Airline
@@ -143,10 +159,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:ctrlp_map='<c-p>'
 let g:ctrlp_cmd='CtrlPMixed'
 let g:ctrlp_working_path_mode='ra'
-
-" vim-terraform
-let g:terraform_align=1
-let g:terraform_fold_sections=1
 
 " vim-devicons
 let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
@@ -158,6 +170,12 @@ map <Leader>ga :GitGutterAll<CR>
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:ycm_semantic_triggers['javascript'] = ['.']
+let g:ycm_semantic_triggers['python'] = ['.']
 
 " vim-go
 let g:go_auto_type_info = 1
@@ -167,6 +185,7 @@ let g:go_gocode_propose_source = 1
 let g:go_gocode_unimported_packages = 1
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_autosave_enabled = ['golint', 'vet', 'errcheck', 'deadcode']
+let g:go_jump_to_error = 0
 
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1

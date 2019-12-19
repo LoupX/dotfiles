@@ -20,6 +20,10 @@
   tags:
     - gpg
 
+- import_tasks: mas.yml
+  tags:
+    - mas
+
 - import_tasks: osx.yml
   tags:
     - osx

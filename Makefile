@@ -6,7 +6,7 @@ install:
 	# Install all the dot files
 	# Requires privilege escalation because of `fish` tasks
 	cd playbook && \
-	ansible-playbook main.yml -t homebrew,fish,vim,osx,dotfiles -K
+	ansible-playbook main.yml -t homebrew,fish,vim,mas,osx,dotfiles -K
 
 homebrew:
 	cd playbook && \
@@ -28,6 +28,11 @@ ssh:
 gpg:
 	cd playbook && \
 	ansible-playbook main.yml -t gpg
+
+
+mas:
+	cd playbook && \
+	ansible-playbook main.yml -t mas
 
 osx:
 	cd playbook && \
