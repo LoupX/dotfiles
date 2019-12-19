@@ -25,3 +25,8 @@
   copy:
     src: "{{ pylintrc_path  }}"
     dest: "{{ ansible_env.HOME  }}/.config/pylintrc"
+
+- name: Updating npmrc
+  copy:
+    src: "{{ npmrc_path }}"
+    dest: "{{ ansible_env.HOME }}/.config/.npmrc"
