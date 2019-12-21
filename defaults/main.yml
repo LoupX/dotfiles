@@ -76,7 +76,6 @@ vim_dependencies:
 - proselint
 
 mas_applications:
-- { id: "1319884285", name: Black Out }
 - { id: "1206020918", name: Battery Indicator }
 - { id: "409183694", name: Keynote }
 - { id: "1263070803", name: Lungo }
@@ -86,7 +85,6 @@ mas_applications:
 - { id: "1278508951", name: Trello }
 - { id: "1384080005", name: Tweetbot }
 - { id: "410628904", name: Wunderlist }
-- { id: "497799835", name: Xcode }
 
 fish_plugins:
 - edc/bass
