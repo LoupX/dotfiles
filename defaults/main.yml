@@ -80,7 +80,6 @@ mas_applications:
 - { id: "1206020918", name: Battery Indicator }
 - { id: "409183694", name: Keynote }
 - { id: "1263070803", name: Lungo }
-- { id: "1289197285", name: MindNode 5 }
 - { id: "1116599239", name: NordVPN }
 - { id: "409201541", name: Pages }
 - { id: "803453959", name: Slack }
