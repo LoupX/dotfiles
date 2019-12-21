@@ -1,5 +1,3 @@
-# .dotfiles [![Build Status](https://travis-ci.org/loupx/dotfiles.svg?branch=master)](https://travis-ci.org/loupx/dotfiles)
-
 Installs almost everything I need in my local environment. It's unlikely that you want your
 setup exactly as mine; feel free to fork it or change the variables described below.
 
@@ -10,7 +8,7 @@ setup exactly as mine; feel free to fork it or change the variables described be
 - Xcode or Xcode command line tools
 - Run `sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /`
 if you're using Mojave or higher (10.14+)
-- If installing apps from the Mac App Store, you need to log into the store manually before running the role.
+- If installing apps from the Mac App Store, you need to log into the store manually before running the role. (This actually changes on MacOS Catalina, unless you haven't used an AppleID to log while first running your computer)
 
 ## Quickstart
 
@@ -32,7 +30,7 @@ xcode-select --install
 # This is the good stuff
 brew update
 brew install ansible
-git clone https://github.com/inkatze/dotfiles.git
+git clone https://github.com/loupx/dotfiles.git
 make
 ```
 
@@ -45,7 +43,7 @@ from [homebrew's home page](https://brew.sh/) and run:
 brew update
 brew install ansible
 xcode-select --install  # This might fail if already installed
-git clone https://github.com/inkatze/dotfiles.git
+git clone https://github.com/loupx/dotfiles.git
 ```
 
 From now on, assume everything is run inside the root of the repository.
@@ -67,7 +65,7 @@ It is also recommended to change the [gitconfig details](files/gitconfig) since 
 
 ### How do I run it
 
-There's a convenient (Makefile)[Makefile] which defines all possible tasks that can be run using
+There's a convenient [Makefile](Makefile) which defines all possible tasks that can be run using
 this role. You can directly use the ansible command you want, all it does is to run persist all
 available ansible tags
 
