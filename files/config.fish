@@ -6,7 +6,7 @@ if status --is-login
     set -xg EDITOR vim
 
     # Fish Theme
-    set -xg fish_greeting '¡Hoal!'
+    set -xg fish_greeting 'Welcome 💻'
     set -xg SPACEFISH_CHAR_SUFFIX '  '
 
     # GPG & git fix
