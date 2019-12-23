@@ -6,7 +6,7 @@ if status --is-login
     set -xg EDITOR vim
 
     # Fish Theme
-    set -xg fish_greeting 'Welcome Neo 🖥'
+    set -xg fish_greeting '¡Hoal!'
     set -xg SPACEFISH_CHAR_SUFFIX '  '
 
     # GPG & git fix
@@ -51,12 +51,16 @@ function __node_binpath_cwd --on-variable PWD
 end
 
 function __python_venv_path --on-event fish_prompt
+  set -l index (contains -i -- $venv_path/bin $fish_user_paths)
   if test -n "$PIPENV_ACTIVE"
-    set -l venv_path (pipenv --venv)
-    set -U fish_user_paths "$venv_path/bin" $fish_user_paths
-  else
-    set -e fish_user_paths
-    set -U fish_user_paths $GOPATH/bin $POSTGRES_BIN
+    if test -z "$index"
+      set -l venv_path (pipenv --venv)
+      set -U fish_user_paths "$venv_path/bin" $fish_user_paths
+    end
+  else if test -e "Pipfile"
+    if test -n "$index"
+      set -e fish_user_paths[$index]
+    end
   end
 end
 
